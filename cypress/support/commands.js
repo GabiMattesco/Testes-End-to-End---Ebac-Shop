@@ -38,7 +38,10 @@ Cypress.Commands.add('preCadastro', (nome, sobrenome) => {
     cy.get('.woocommerce-Button').click()
 });
 
-Cypress.Commands.add('addProdutos', (tamanho, cor, quantidade) => {
+Cypress.Commands.add('addProdutos', (item, tamanho, cor, quantidade) => {
+    cy.visit('produtos/')
+        cy.get('[class="product-block grid"]')
+        .eq(item).click()
     cy.get('.button-variable-item-' + tamanho).click()
     cy.get('.button-variable-item-' + cor).click()
     cy.get('.input-text').clear().type(quantidade)

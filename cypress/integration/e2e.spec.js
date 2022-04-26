@@ -18,33 +18,17 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         enderecopage.editarEnderecoFaturamento('Gabriela', 'Mattesco', 'Ebac', 'Brasil', 'Av. Brasil', '100', 'Rio de Janeiro', 'Rio de Janeiro', '21530000', '2177777777', 'gabrielamattesco@msn.com')
         enderecopage.editarEnderecoEntrega('Gabriela', 'Mattesco', 'Ebac', 'Brasil', 'Av. Brasil', '100', 'Rio de Janeiro', 'Rio de Janeiro', '21530000')
 
-            
-        cy.visit('produtos/')
-        cy.get('[class="product-block grid"]')
-            .eq(3).click()
-        cy.addProdutos('XS', 'Blue', 2),
+       cy.addProdutos('3', 'XS', 'Blue', 2),
+       cy.addProdutos('5', '36', 'Black', 5),
+       cy.addProdutos('7', 'XL', 'Green', 6),
+       cy.addProdutos('8', 'S', 'Blue', 1)
 
-        cy.visit('produtos/')
-        cy.get('[class="product-block grid"]')
-            .eq(5).click()
-        cy.addProdutos('36', 'Black', 5),
-
-        cy.visit('produtos/')
-        cy.get('[class="product-block grid"]')
-            .eq(7).click()
-        cy.addProdutos('XL', 'Green', 6),
-
-        cy.visit('produtos/')
-        cy.get('[class="product-block grid"]')
-            .eq(8).click()
-        cy.addProdutos('S', 'Blue', 1)
-
-        cy.get('#cart > .dropdown-toggle').click()
-        cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .checkout').click({ force: true })
+        cy.get('.woocommerce-message > .button').click() 
+        cy.get('.checkout-button').click()  
         cy.get('[type="checkbox"]').first().check()
         cy.get('[type="checkbox"]').check()
         cy.get('#place_order').click({ force: true })
-        
+        cy.get('tfoot > :nth-child(3) > td > .woocommerce-Price-amount').should('contain', 'R$490,00')
         cy.get('.woocommerce-order-details__title').should('contain', 'Detalhes do pedido')
         cy.get('.woocommerce-column__title').should('contain', 'Endereço de faturamento')
 
