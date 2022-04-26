@@ -16,7 +16,6 @@ class EnderecoPage {
         cy.get('#billing_email').clear().type(email)
         cy.get(':nth-child(2) > .button').click()
     }
-
     editarEnderecoEntrega(nome, sobrenome, empresa, pais, endereco, numero, cidade, estado, cep) {
         cy.get(':nth-child(2) > .title > .edit').click()
         cy.get('#shipping_first_name').clear().type(nome)
@@ -30,8 +29,9 @@ class EnderecoPage {
         cy.get('#shipping_postcode').clear().type(cep)
         cy.get(':nth-child(2) > .button').click()
     }
-
+    
 }
+
 
 export default new EnderecoPage()
 
