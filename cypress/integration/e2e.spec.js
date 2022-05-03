@@ -13,12 +13,12 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('.page-title').should('contain', 'Minha conta')
     });
 
-    it('Deve efetuar a compra com sucesso - Usando comandos customizados', () => {
+    it.only('Deve efetuar a compra com sucesso - Usando comandos customizados', () => {
         cy.preCadastro('Gabriela', 'Mattesco')
         enderecopage.editarEnderecoFaturamento('Gabriela', 'Mattesco', 'Ebac', 'Brasil', 'Av. Brasil', '100', 'Rio de Janeiro', 'Rio de Janeiro', '21530000', '2177777777', 'gabrielamattesco@msn.com')
         enderecopage.editarEnderecoEntrega('Gabriela', 'Mattesco', 'Ebac', 'Brasil', 'Av. Brasil', '100', 'Rio de Janeiro', 'Rio de Janeiro', '21530000')
 
-       cy.addProdutos('3', 'XS', 'Blue', 2),
+       cy.addProdutos('3', 'S', 'Blue', 2),
        cy.addProdutos('5', '36', 'Black', 5),
        cy.addProdutos('7', 'XL', 'Green', 6),
        cy.addProdutos('8', 'S', 'Blue', 1)
