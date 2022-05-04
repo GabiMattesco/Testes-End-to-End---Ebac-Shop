@@ -20,7 +20,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
        cy.addProdutos('3', 'S', 'Blue', 2),
        cy.addProdutos('5', '36', 'Black', 5),
-       cy.addProdutos('7', 'XL', 'Green', 6),
+       cy.addProdutos('7', 'XL', 'Green', 2),
        cy.addProdutos('8', 'XL', 'Blue', 1)
 
         cy.get('.woocommerce-message > .button').click({ force: true }) 
@@ -28,7 +28,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('[type="checkbox"]').first().check()
         cy.get('[type="checkbox"]').check()
         cy.get('#place_order').click({ force: true })
-        cy.get('tfoot > :nth-child(3) > td > .woocommerce-Price-amount').should('contain', 'R$490,00')
+        cy.get('tfoot > :nth-child(3) > td > .woocommerce-Price-amount').should('contain', 'R$334,00')
         cy.get('.woocommerce-order-details__title').should('contain', 'Detalhes do pedido')
         cy.get('.woocommerce-column__title').should('contain', 'Endereço de faturamento')
 
