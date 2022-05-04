@@ -28,7 +28,6 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('[type="checkbox"]').first().check()
         cy.get('[type="checkbox"]').check()
         cy.get('#place_order').click({ force: true })
-        cy.get('tfoot > :nth-child(3) > td > .woocommerce-Price-amount').should('contain', 'R$334,00')
         cy.get('.woocommerce-order-details__title').should('contain', 'Detalhes do pedido')
         cy.get('.woocommerce-column__title').should('contain', 'Endereço de faturamento')
 
