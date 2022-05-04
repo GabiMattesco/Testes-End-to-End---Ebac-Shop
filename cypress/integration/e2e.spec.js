@@ -21,9 +21,9 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
        cy.addProdutos('3', 'S', 'Blue', 2),
        cy.addProdutos('5', '36', 'Black', 5),
        cy.addProdutos('7', 'XL', 'Green', 6),
-       cy.addProdutos('8', 'S', 'Blue', 1)
+       cy.addProdutos('8', 'XL', 'Blue', 1)
 
-        cy.get('.woocommerce-message > .button').click() 
+        cy.get('.woocommerce-message > .button').click({ force: true }) 
         cy.get('.checkout-button').click()  
         cy.get('[type="checkbox"]').first().check()
         cy.get('[type="checkbox"]').check()
